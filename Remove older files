@@ -1,0 +1,10 @@
+#!/bin/bash
+rention_days=21
+Dir_Path='/home/test'
+
+#find $Dir_Path -type d -mtime +$rention_days  -exec ls -ltrh {} \; > /tmp/del-list.txt
+
+find $Dir_Path -type f -mtime +$rention_days  -exec ls -ltrh {} \;  | tee /tmp/del-list.txt > /dev/null
+
+#when you want to delete files older than 21 days from the directory then uncomment the below line
+#find $Dir_Path -type f -mtime +$rention_days  -exec rm -rf {} \;
